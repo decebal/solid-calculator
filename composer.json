@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\Calculator\\": "src"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Calculator\\Test\\": "tests"
+            "App\\Test\\": "tests"
         }
     }
 }

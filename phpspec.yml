@@ -1,3 +1,7 @@
+suites:
+    calculator_suite:
+        namespace: App
+        psr4_prefix: App
 extensions:
     - PhpSpec\Extension\CodeCoverageExtension
 code_coverage:
