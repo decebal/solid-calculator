@@ -10,8 +10,9 @@ namespace App\Operations;
 
 
 use App\Contracts\OperationFactory;
+use App\Contracts\OperationInterface;
 
-class Multiplication extends OperationFactory
+class Multiplication extends OperationFactory implements OperationInterface
 {
     public static $sign = '*';
     public $inversePriority = 2;

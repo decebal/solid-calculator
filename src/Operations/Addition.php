@@ -9,13 +9,14 @@
 namespace App\Operations;
 
 use App\Contracts\OperationFactory;
+use App\Contracts\OperationInterface;
 
 /**
  * Class Addition
  *
  * @package Operations
  */
-class Addition extends OperationFactory
+class Addition extends OperationFactory implements OperationInterface
 {
     public static $sign = '+';
     public $inversePriority = 1;

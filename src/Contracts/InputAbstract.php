@@ -18,7 +18,7 @@ abstract class InputAbstract
     public $string = '';
 
     /**
-     * @return array
+     * @return \ArrayObject
      */
     public abstract function parseInput();
 

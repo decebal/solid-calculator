@@ -9,6 +9,7 @@
 namespace App\Models;
 
 use App\Operations;
+
 /**
  * Class OperationIterator
  *
@@ -17,7 +18,22 @@ use App\Operations;
 class OperationIterator
 {
 
-    public function getOperations($directory = null)
+    public $signs = array();
+    public $flippedSigns = array();
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+        $this->setOperationSigns();
+    }
+
+    /**
+     * @param null $directory
+     * @return array
+     */
+    public static function getClassNamesFromDirectory($directory = null)
     {
         $classes = array();
         $iterator = new \DirectoryIterator($directory);
@@ -31,7 +47,7 @@ class OperationIterator
         return $classes;
     }
 
-    public function getOperationsDirectory()
+    protected function getOperationsDirectory()
     {
         $currentDir = dirname(__FILE__);
 
@@ -43,13 +59,62 @@ class OperationIterator
 
     public function getOperationSigns()
     {
-        $operations = $this->getOperations($this->getOperationsDirectory());
+        return $this->signs;
+    }
+
+    /**
+     * Flip The signs array
+     */
+    public function setOperationsBySigns()
+    {
+        $this->flippedSigns = array_flip($this->signs);
+    }
+
+    /**
+     * @return array
+     */
+    public function getOperationsBySigns()
+    {
+        if (empty($this->flippedSigns) && $this->signs) {
+            $this->setOperationsBySigns();
+        }
+
+        return $this->flippedSigns;
+    }
+
+    protected function setOperationsByPriority()
+    {
+        $obj = new OperationCollection($this->getOperationsBySigns());
+        $obj->setComparator(new PriorityComparator());
+
+        $this->flippedSigns = $obj->sort();
+    }
+
+    /**
+     * @return array
+     */
+    public function getOperationsByPriority()
+    {
+        if (empty($this->flippedSigns) && $this->signs) {
+            $this->setOperationsByPriority();
+        }
+
+        return $this->flippedSigns;
+    }
+
+
+    /**
+     *
+     */
+    public function setOperationSigns()
+    {
+        $operations = $this->getClassNamesFromDirectory($this->getOperationsDirectory());
         $signs = array();
         foreach ($operations as $operation) {
             $operationClass = "App\\Operations\\" .$operation;
-            $signs[] = $operationClass::getSign();
+            $signs[$operationClass] = $operationClass::getSign();
         }
 
-        return $signs;
+        $this->signs = $signs;
     }
 }

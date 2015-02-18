@@ -9,13 +9,14 @@
 namespace App\Operations;
 
 use App\Contracts\OperationFactory;
+use App\Contracts\OperationInterface;
 
 /**
  * Class Subtraction
  *
  * @package Operations
  */
-class Subtraction extends OperationFactory
+class Subtraction extends OperationFactory implements OperationInterface
 {
     public static $sign = '-';
     public $inversePriority = 1;

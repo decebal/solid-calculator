@@ -10,6 +10,16 @@ class Calculator
     {
         $input = new Input($string, new OperationIterator());
         $inputArray = $input->parseInput();
+        $expression = '';
+        $operations = $input->iterator->getOperationsByPriority();
+        foreach($inputArray as $expressionPart) {
+            if ($input->isOperator($expressionPart)) {
+                //get precedence
+            }
+
+            $expression .= $expressionPart;
+            //get operator by sign
+        }
     }
 
 }

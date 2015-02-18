@@ -15,5 +15,14 @@ namespace App\Contracts;
  */
 interface OperationInterface
 {
-    public function compute();
+    /**
+     * @param string $expression
+     * @return int
+     */
+    public function compute($expression = '');
+
+    /**
+     * @return int
+     */
+    public function getInversePriority();
 }

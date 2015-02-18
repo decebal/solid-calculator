@@ -10,14 +10,15 @@ namespace App\Operations;
 
 
 use App\Contracts\OperationFactory;
+use App\Contracts\OperationInterface;
 
 /**
  * Class Division
  *
  * @package Operations
  */
-class Division extends OperationFactory
+class Division extends OperationFactory implements OperationInterface
 {
     public static $sign = '/';
-    public $inversePriority = 1;
+    public $inversePriority = 2;
 }
