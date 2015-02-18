@@ -37,9 +37,4 @@ abstract class OperationFactory
     {
         return static::$sign;
     }
-
-    public function compute($expression = '')
-    {
-        return eval($expression);
-    }
 }

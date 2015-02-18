@@ -10,15 +10,29 @@ class Calculator
     {
         $input = new Input($string, new OperationIterator());
         $inputArray = $input->parseInput();
-        $expression = '';
+        $inputIterator = $inputArray->getIterator();
+        $memberA = '';
+        $previous = '';
+        $lastOperatorPriority = 9;
+
         $operations = $input->iterator->getOperationsByPriority();
-        foreach($inputArray as $expressionPart) {
-            if ($input->isOperator($expressionPart)) {
-                //get precedence
+        $operatorsByPriority = array_flip(array_keys($operations));
+
+        while($inputIterator->valid()) {
+            if ($input->isOperator($inputIterator->current())) {
+                $operator = $inputIterator->current();
+
+                $inputIterator->next();
+                $memberB = $inputIterator->current();
+
+                $operationInstance = new $operations[$operator]();
+
+                $memberA = $operationInstance->compute($memberA, $memberB);
+            } else {
+                $memberA = $inputIterator->current();
             }
 
-            $expression .= $expressionPart;
-            //get operator by sign
+            $inputIterator->next();
         }
     }
 
