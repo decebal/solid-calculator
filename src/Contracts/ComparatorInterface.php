@@ -6,7 +6,7 @@
  * Time: 22:15
  */
 
-namespace Contracts;
+namespace App\Contracts;
 
 interface ComparatorInterface
 {

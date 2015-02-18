@@ -6,7 +6,7 @@
  * Time: 21:58
  */
 
-namespace Contracts;
+namespace App\Contracts;
 
 /**
  * Class InputAbstract
@@ -18,32 +18,20 @@ abstract class InputAbstract
     public $string = '';
 
     /**
-     * @param string $string
-     *
-     * @return string
+     * @return array
      */
-    public function parseInput($string = '')
-    {
-        return $string;
-    }
+    public abstract function parseInput();
 
     /**
-     * @param string $string
-     *
      * @return bool
      */
-    public function validateInput($string = '')
-    {
-        return true;
-    }
+    public abstract function validateInput();
 
     /**
-     * @param string $string
-     *
      * @return mixed
      */
-    public final function removeWhiteSpaces($string = '')
+    public final function removeWhiteSpaces()
     {
-        return preg_replace('/\s+/', '', $string);
+        return preg_replace('/\s+/', '', $this->string);
     }
 }

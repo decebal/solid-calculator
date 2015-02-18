@@ -6,8 +6,8 @@
  * Time: 22:19
  */
 
-namespace Models;
-use Contracts\ComparatorInterface;
+namespace App\Models;
+use App\Contracts\ComparatorInterface;
 
 class PriorityComparator implements ComparatorInterface
 {

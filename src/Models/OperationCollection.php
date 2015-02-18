@@ -6,8 +6,8 @@
  * Time: 22:14
  */
 
-namespace Models;
-use Contracts\ComparatorInterface;
+namespace App\Models;
+use App\Contracts\ComparatorInterface;
 
 /**
  * Class OperationCollection

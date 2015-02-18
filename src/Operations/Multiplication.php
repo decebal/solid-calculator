@@ -6,13 +6,13 @@
  * Time: 22:28
  */
 
-namespace Operations;
+namespace App\Operations;
 
 
-use Contracts\OperationFactory;
+use App\Contracts\OperationFactory;
 
 class Multiplication extends OperationFactory
 {
-    public $sign = '*';
+    public static $sign = '*';
     public $inversePriority = 2;
 }

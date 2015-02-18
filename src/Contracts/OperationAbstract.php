@@ -6,7 +6,7 @@
  * Time: 21:55
  */
 
-namespace Contracts;
+namespace App\Contracts;
 
 /**
  * Class OperationAbstract

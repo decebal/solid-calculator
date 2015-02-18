@@ -6,10 +6,10 @@
  * Time: 22:28
  */
 
-namespace Operations;
+namespace App\Operations;
 
 
-use Contracts\OperationFactory;
+use App\Contracts\OperationFactory;
 
 /**
  * Class Division
@@ -18,6 +18,6 @@ use Contracts\OperationFactory;
  */
 class Division extends OperationFactory
 {
-    public $sign = '/';
+    public static $sign = '/';
     public $inversePriority = 1;
 }

@@ -6,9 +6,9 @@
  * Time: 22:06
  */
 
-namespace Operations;
+namespace App\Operations;
 
-use Contracts\OperationFactory;
+use App\Contracts\OperationFactory;
 
 /**
  * Class Addition
@@ -17,6 +17,6 @@ use Contracts\OperationFactory;
  */
 class Addition extends OperationFactory
 {
-    public $sign = '+';
+    public static $sign = '+';
     public $inversePriority = 1;
 }

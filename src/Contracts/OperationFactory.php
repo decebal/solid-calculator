@@ -6,7 +6,7 @@
  * Time: 22:07
  */
 
-namespace Contracts;
+namespace App\Contracts;
 
 /**
  * Class OperationFactory
@@ -18,7 +18,7 @@ abstract class OperationFactory
     const MIN_PRIORITY = 1;
 
     public $inversePriority = 1;
-    public $sign = '+';
+    public static $sign = '+';
 
     /**
      * @return int
@@ -29,10 +29,12 @@ abstract class OperationFactory
     }
 
     /**
+     * Late static binding for children
+     *
      * @return string
      */
-    public function getSign()
+    public static function getSign()
     {
-        return $this->sign;
+        return static::$sign;
     }
 }

@@ -6,7 +6,7 @@
  * Time: 21:54
  */
 
-namespace Contracts;
+namespace App\Contracts;
 
 /**
  * Interface OperationInterface
