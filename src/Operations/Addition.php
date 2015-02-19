@@ -31,6 +31,4 @@ class Addition extends OperationFactory implements OperationInterface
     {
         return (float)$memberA + (float)$memberB;
     }
-
-
 }

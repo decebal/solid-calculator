@@ -34,6 +34,8 @@ class Calculator
 
             $inputIterator->next();
         }
+
+        return $memberA;
     }
 
 }
