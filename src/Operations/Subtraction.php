@@ -19,7 +19,7 @@ use App\Contracts\OperationInterface;
 class Subtraction extends OperationFactory implements OperationInterface
 {
     public static $sign = '-';
-    public $inversePriority = 1;
+    public $inversePriority = 2;
 
     /**
      * @param string $memberA
