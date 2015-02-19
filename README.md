@@ -13,7 +13,7 @@ $ composer install
 ## Usage
 
 ``` php
-$calculator = new App\Calculator();
+$calculator = new App\Controller\Calculator();
 echo $calculator->compute('3+6*2-1');
 ```
 
