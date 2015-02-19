@@ -16,10 +16,12 @@ namespace App\Contracts;
 interface OperationInterface
 {
     /**
-     * @param string $expression
-     * @return int
+     * @param string $memberA
+     * @param string $memberB
+     *
+     * @return float
      */
-    public function compute($expression = '');
+    public function compute($memberA = '', $memberB = '');
 
     /**
      * @return int

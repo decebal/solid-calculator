@@ -1,5 +1,6 @@
 <?php namespace App\Controller;
 
+use App\Models\Graph;
 use App\Models\Input;
 use App\Models\OperationIterator;
 
@@ -10,16 +11,33 @@ class Calculator
     {
         $input = new Input($string, new OperationIterator());
         $inputArray = $input->parseInput();
-        $expression = '';
+        $inputIterator = $inputArray->getIterator();
+        $memberA = '';
+
         $operations = $input->iterator->getOperationsByPriority();
-        foreach($inputArray as $expressionPart) {
-            if ($input->isOperator($expressionPart)) {
-                //get precedence
+        $graph = array();
+        while($inputIterator->valid()) {
+            if ($input->isOperator($inputIterator->current())) {
+                $operator = $inputIterator->current();
+
+                $inputIterator->next();
+                $memberB = $inputIterator->key();
+
+                $operationInstance = new $operations[$operator]();
+                $graph[$memberA][$memberB] = $operationInstance->getInversePriority();
+                $graph[$memberB][$memberA] = $operationInstance->getInversePriority();
+
+                $memberA = $inputIterator->key();
+            } else {
+                $memberA = $inputIterator->key();
             }
 
-            $expression .= $expressionPart;
-            //get operator by sign
+            $inputIterator->next();
         }
+        $g = new Graph($graph);
+        
+
+        return $result;
     }
 
 }

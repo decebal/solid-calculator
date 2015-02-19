@@ -22,6 +22,7 @@ class Input extends  InputAbstract
      */
     public function __construct($string = '', OperationIterator $iterator)
     {
+        //$this->string = $this->removeWhiteSpaces($string);
         $this->string = $string;
         $this->iterator = $iterator;
     }
