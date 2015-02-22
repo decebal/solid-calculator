@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Services;
 /**
  * Created by PhpStorm.
  * User: decebal
@@ -6,10 +6,8 @@
  * Time: 22:34
  */
 
-namespace App\Models;
-
 use App\Contracts\InputAbstract;
-use App\Models\OperationIterator;
+use App\Contracts\OperationIteratorInterface;
 
 class Input extends  InputAbstract
 {
@@ -18,12 +16,11 @@ class Input extends  InputAbstract
 
     /**
      * @param string $string
-     * @param OperationIterator $iterator
+     * @param OperationIteratorInterface $iterator
      */
-    public function __construct($string = '', OperationIterator $iterator)
+    public function __construct($string = '', OperationIteratorInterface $iterator)
     {
-        //$this->string = $this->removeWhiteSpaces($string);
-        $this->string = $string;
+        $this->setString($string);
         $this->iterator = $iterator;
     }
 

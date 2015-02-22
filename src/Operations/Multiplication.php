@@ -15,7 +15,7 @@ use App\Contracts\OperationInterface;
 class Multiplication extends OperationFactory implements OperationInterface
 {
     public static $sign = '*';
-    public $inversePriority = 4;
+    public $inversePriority = 3;
 
     /**
      * @param string $memberA
