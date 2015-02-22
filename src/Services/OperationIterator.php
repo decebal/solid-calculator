@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Services;
 /**
  * Created by PhpStorm.
  * User: decebal
@@ -6,8 +6,8 @@
  * Time: 22:42
  */
 
-namespace App\Models;
-
+use App\Contracts\OperationIteratorInterface;
+use App\Models\OperationCollection;
 use App\Operations;
 
 /**
@@ -15,9 +15,8 @@ use App\Operations;
  *
  * @package Models
  */
-class OperationIterator
+class OperationIterator implements OperationIteratorInterface
 {
-
     public $signs = array();
     public $flippedSigns = array();
 
@@ -85,9 +84,8 @@ class OperationIterator
     protected function setOperationsByPriority()
     {
         $obj = new OperationCollection($this->getOperationsBySigns());
-        $obj->setComparator(new PriorityComparator());
 
-        $this->flippedSigns = $obj->sort();
+        $this->flippedSigns = $obj->getOperations();
     }
 
     /**
@@ -104,7 +102,7 @@ class OperationIterator
 
 
     /**
-     *
+     * Collect defined operation signs in an attribute
      */
     public function setOperationSigns()
     {

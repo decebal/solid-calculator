@@ -20,7 +20,7 @@ use App\Contracts\OperationInterface;
 class Division extends OperationFactory implements OperationInterface
 {
     public static $sign = '/';
-    public $inversePriority = 3;
+    public $inversePriority = 4;
 
     /**
      * @param string $memberA

@@ -1,13 +1,10 @@
-<?php
+<?php namespace App\Models;
 /**
  * Created by PhpStorm.
  * User: decebal
  * Date: 18.02.2015
  * Time: 22:14
  */
-
-namespace App\Models;
-use App\Contracts\ComparatorInterface;
 
 /**
  * Class OperationCollection
@@ -17,45 +14,38 @@ use App\Contracts\ComparatorInterface;
 class OperationCollection
 {
     /**
-     * @var array
+     * @var \SplPriorityQueue containing OperationInterface items
      */
-    private $elements;
+    private $operations = array();
 
     /**
-     * @var ComparatorInterface
+     * @param array $operations array of instances of OperationInterface
      */
-    private $comparator;
-
-    /**
-     * @param array $elements
-     */
-    public function __construct(array $elements = array())
+    public function __construct(array $operations = array())
     {
-        $this->elements = $elements;
+        $this->setOperations($operations);
     }
 
     /**
      * @return array
      */
-    public function sort()
+    public function getOperations()
     {
-        if (!$this->comparator) {
-            throw new \LogicException("Comparator is not set");
-        }
-        $callback = array($this->comparator, 'compare');
-        uasort($this->elements, $callback);
-
-        return $this->elements;
+        return $this->operations;
     }
 
     /**
-     * @param ComparatorInterface $comparator
-     *
-     * @return void
+     * @param array $operations
      */
-    public function setComparator(ComparatorInterface $comparator)
+    public function setOperations(array $operations = array())
     {
-        $this->comparator = $comparator;
-    }
+        $operationQueue = new \SplPriorityQueue();
 
+        foreach($operations as $operation) {
+            $operationInstance = new $operation();
+            $operationQueue->insert($operationInstance, $operationInstance->getInversePriority());
+        }
+
+        $this->operations = $operationQueue;
+    }
 }

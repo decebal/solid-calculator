@@ -16,6 +16,7 @@ namespace App\Contracts;
 abstract class InputAbstract
 {
     public $string = '';
+    public $iterator = null;
 
     /**
      * @return \ArrayObject
@@ -26,6 +27,14 @@ abstract class InputAbstract
      * @return bool
      */
     public abstract function validateInput();
+
+    /**
+     * @param string $string
+     */
+    public function setString($string)
+    {
+        $this->string = $string;
+    }
 
     /**
      * @return mixed
