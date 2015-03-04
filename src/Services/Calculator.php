@@ -13,25 +13,22 @@ use App\Contracts\OperationIteratorInterface;
 
 class Calculator implements CalculatorInterface
 {
-
     /**
      * @var null
      */
     protected $input = null;
-    protected $operationsQueue = array();
+    protected $operationsQueue = [];
 
-    function __construct(InputAbstract $input, OperationIteratorInterface $iterator)
+    public function __construct(InputAbstract $input, OperationIteratorInterface $iterator)
     {
         $this->input = $input;
         $this->operationsQueue = $iterator->getOperationsByPriority();
     }
 
-
     /**
-     *
      * @return float
      */
-    function compute()
+    public function compute()
     {
         $this->operationsQueue->top();
         $expression = $this->input->string;
@@ -98,7 +95,6 @@ class Calculator implements CalculatorInterface
             }
         }
 
-        return join('', $newExpression);
+        return implode('', $newExpression);
     }
-
 }
