@@ -16,17 +16,8 @@ namespace App\Contracts;
 abstract class OperationFactory
 {
     const MIN_PRIORITY = 1;
-
-    public $inversePriority = 1;
     public static $sign = '+';
-
-    /**
-     * @return int
-     */
-    public function getInversePriority()
-    {
-        return $this->inversePriority;
-    }
+    public $inversePriority = 1;
 
     /**
      * Late static binding for children
@@ -36,5 +27,13 @@ abstract class OperationFactory
     public static function getSign()
     {
         return static::$sign;
+    }
+
+    /**
+     * @return int
+     */
+    public function getInversePriority()
+    {
+        return $this->inversePriority;
     }
 }

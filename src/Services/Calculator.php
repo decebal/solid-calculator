@@ -1,4 +1,5 @@
 <?php namespace App\Services;
+
 /**
  * Created by PhpStorm.
  * User: decebal
@@ -62,7 +63,7 @@ class Calculator implements CalculatorInterface
         $computed = array();
 
         //explore the operation members
-        while($inputIterator->valid()) {
+        while ($inputIterator->valid()) {
             //compute only if operator is present
             if ($this->input->isOperator($inputIterator->current())) {
                 $operator = $inputIterator->current();
@@ -93,7 +94,8 @@ class Calculator implements CalculatorInterface
 
             //add last element from expression
             if (!$inputIterator->valid()
-                && !isset($computed[$memberA])) {
+                && !isset($computed[$memberA])
+            ) {
                 $newExpression[] = $inputArray[$memberA];
             }
         }

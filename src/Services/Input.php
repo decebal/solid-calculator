@@ -1,4 +1,5 @@
 <?php namespace App\Services;
+
 /**
  * Created by PhpStorm.
  * User: decebal
@@ -9,7 +10,7 @@
 use App\Contracts\InputAbstract;
 use App\Contracts\OperationIteratorInterface;
 
-class Input extends  InputAbstract
+class Input extends InputAbstract
 {
     public $string;
     public $iterator;
@@ -48,7 +49,7 @@ class Input extends  InputAbstract
      */
     public function parseInput()
     {
-        preg_match_all("/([".join('\\', $this->iterator->getOperationSigns())."]+)?([0-9]*)/",
+        preg_match_all("/([" . join('\\', $this->iterator->getOperationSigns()) . "]+)?([0-9]*)/",
             $this->string,
             $keywords,
             PREG_OFFSET_CAPTURE
@@ -71,7 +72,7 @@ class Input extends  InputAbstract
     {
         $isOperator = false;
         $signs = $this->iterator->getOperationSigns();
-        foreach($signs as $sign) {
+        foreach ($signs as $sign) {
             if ($sign === $string) {
                 $isOperator = true;
                 break;

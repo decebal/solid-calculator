@@ -1,10 +1,10 @@
 <?php namespace App\Models;
-/**
- * Created by PhpStorm.
- * User: decebal
- * Date: 18.02.2015
- * Time: 22:14
- */
+    /**
+     * Created by PhpStorm.
+     * User: decebal
+     * Date: 18.02.2015
+     * Time: 22:14
+     */
 
 /**
  * Class OperationCollection
@@ -41,7 +41,7 @@ class OperationCollection
     {
         $operationQueue = new \SplPriorityQueue();
 
-        foreach($operations as $operation) {
+        foreach ($operations as $operation) {
             $operationInstance = new $operation();
             $operationQueue->insert($operationInstance, $operationInstance->getInversePriority());
         }

@@ -16,7 +16,7 @@ class Calculator
 
         $operations = $input->iterator->getOperationsByPriority();
 
-        while($inputIterator->valid()) {
+        while ($inputIterator->valid()) {
             if ($input->isOperator($inputIterator->current())) {
                 $operator = $inputIterator->current();
 
