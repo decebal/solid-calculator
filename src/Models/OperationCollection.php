@@ -1,27 +1,26 @@
 <?php namespace App\Models;
-    /**
-     * Created by PhpStorm.
-     * User: decebal
-     * Date: 18.02.2015
-     * Time: 22:14
-     */
 
 /**
- * Class OperationCollection
- *
- * @package Contracts
+ * Created by PhpStorm.
+ * User: decebal
+ * Date: 18.02.2015
+ * Time: 22:14.
+ */
+
+/**
+ * Class OperationCollection.
  */
 class OperationCollection
 {
     /**
      * @var \SplPriorityQueue containing OperationInterface items
      */
-    private $operations = array();
+    private $operations = [];
 
     /**
      * @param array $operations array of instances of OperationInterface
      */
-    public function __construct(array $operations = array())
+    public function __construct(array $operations = [])
     {
         $this->setOperations($operations);
     }

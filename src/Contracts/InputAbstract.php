@@ -3,15 +3,13 @@
  * Created by PhpStorm.
  * User: decebal
  * Date: 18.02.2015
- * Time: 21:58
+ * Time: 21:58.
  */
 
 namespace App\Contracts;
 
 /**
- * Class InputAbstract
- *
- * @package Contracts
+ * Class InputAbstract.
  */
 abstract class InputAbstract
 {
@@ -21,12 +19,12 @@ abstract class InputAbstract
     /**
      * @return \ArrayObject
      */
-    public abstract function parseInput();
+    abstract public function parseInput();
 
     /**
      * @return bool
      */
-    public abstract function validateInput();
+    abstract public function validateInput();
 
     /**
      * @param string $string
@@ -41,7 +39,7 @@ abstract class InputAbstract
      *
      * @return mixed
      */
-    public final function removeWhiteSpaces($string = '')
+    final public function removeWhiteSpaces($string = '')
     {
         return preg_replace('/\s+/', '', $string);
     }

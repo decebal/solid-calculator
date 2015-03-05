@@ -3,22 +3,22 @@
  * Created by PhpStorm.
  * User: decebal
  * Date: 22.02.2015
- * Time: 20:41
+ * Time: 20:41.
  */
 
 namespace App\Contracts;
-
 
 interface CalculatorInterface
 {
     /**
      * @return float
      */
-    function compute();
+    public function compute();
 
     /**
      * @param OperationInterface $operation
+     *
      * @return mixed
      */
-    function computeLine(OperationInterface $operation = null);
+    public function computeLine(OperationInterface $operation = null);
 }

@@ -1,5 +1,6 @@
 <?php namespace App\Services;
-/**
+
+/*
  * Created by PhpStorm.
  * User: decebal
  * Date: 22.02.2015
@@ -43,29 +44,28 @@ class Calculator implements CalculatorInterface
             $this->computeLine($operation);
         }
 
-        return join('', $this->expressionBuffer->getArrayCopy());
+        return implode('', $this->expressionBuffer->getArrayCopy());
     }
-
 
     /**
      * @param OperationInterface $operation
      *
      * @return mixed|void
      */
-    function computeLine(OperationInterface $operation = null)
+    public function computeLine(OperationInterface $operation = null)
     {
         $inputIterator = $this->expressionBuffer->getIterator();
 
         $currentSign = $operation::getSign();
 
         $memberA = 0;
-        $computed = array();
+        $computed = [];
         $processed = false;
         $result = 0;
 
         //explore the operation members
         $inputIterator->rewind();
-        while($inputIterator->valid()) {
+        while ($inputIterator->valid()) {
             //compute only if operator is present
             if ($this->input->isOperator($inputIterator->current())) {
                 $operator = $inputIterator->current();
@@ -107,7 +107,7 @@ class Calculator implements CalculatorInterface
     }
 
     /**
-     * Update Buffer Members
+     * Update Buffer Members.
      *
      * @param $computed
      * @param $newExpression
@@ -134,9 +134,10 @@ class Calculator implements CalculatorInterface
 
     /**
      * Check current buffer for more signs
-     * in order to decide a re-computation with the same operation
+     * in order to decide a re-computation with the same operation.
      *
      * @param $currentSign
+     *
      * @return bool
      */
     protected function hasMoreSigns($currentSign)
@@ -150,6 +151,7 @@ class Calculator implements CalculatorInterface
             }
             $bufferIterator->next();
         }
+
         return $redo;
     }
 }

@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-/**
+/*
  * Created by PhpStorm.
  * User: decebal
  * Date: 18.02.2015
@@ -100,16 +100,15 @@ class OperationIterator implements OperationIteratorInterface
         return $this->flippedSigns;
     }
 
-
     /**
-     * Collect defined operation signs in an attribute
+     * Collect defined operation signs in an attribute.
      */
     public function setOperationSigns()
     {
         $operations = $this->getClassNamesFromDirectory($this->getOperationsDirectory());
-        $signs = array();
+        $signs = [];
         foreach ($operations as $operation) {
-            $operationClass = "App\\Operations\\" . $operation;
+            $operationClass = "App\\Operations\\".$operation;
             $signs[$operationClass] = $operationClass::getSign();
         }
 

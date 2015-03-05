@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-/**
+/*
  * Created by PhpStorm.
  * User: decebal
  * Date: 18.02.2015
@@ -43,13 +43,12 @@ class Input extends InputAbstract
         return $orderedStringMatches;
     }
 
-
     /**
      * @return \ArrayObject
      */
     public function parseInput()
     {
-        preg_match_all("/([" . join('\\', $this->iterator->getOperationSigns()) . "]+)?([0-9]*)/",
+        preg_match_all("/([".implode('\\', $this->iterator->getOperationSigns())."]+)?([0-9]*)/",
             $this->string,
             $keywords,
             PREG_OFFSET_CAPTURE
