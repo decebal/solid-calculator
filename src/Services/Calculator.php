@@ -57,14 +57,16 @@ class Calculator implements CalculatorInterface
     function computeLine(OperationInterface $operation = null)
     {
         $inputIterator = $this->expressionBuffer->getIterator();
-        $newExpression = array();
+
         $currentSign = $operation::getSign();
 
         $memberA = 0;
         $computed = array();
         $processed = false;
+        $result = 0;
 
         //explore the operation members
+        $inputIterator->rewind();
         while($inputIterator->valid()) {
             //compute only if operator is present
             if ($this->input->isOperator($inputIterator->current())) {
@@ -77,7 +79,7 @@ class Calculator implements CalculatorInterface
 
                 if ($currentSign === $operator) {
                     //compute and mark members as computed
-                    $newExpression = $operation->compute(
+                    $result = $operation->compute(
                         $this->expressionBuffer[$memberA],
                         $this->expressionBuffer[$memberB]
                     );
@@ -86,13 +88,6 @@ class Calculator implements CalculatorInterface
                     $computed[$memberB] = true;
                     $computed[$operatorKey] = true;
                     $processed = true;
-                } else {
-                    //@is this needed anymore
-                    //add elements not ready to be computed back to the expression
-//                    if (!isset($computed[$memberA])) {
-//                        $newExpression[] = $this->expressionBuffer[$memberA];
-//                    }
-//                    $newExpression[] = $operator;
                 }
 
                 $memberA = $memberB;
@@ -102,30 +97,27 @@ class Calculator implements CalculatorInterface
 
             $inputIterator->next();
 
-            //@is this needed anymore
-            //add last element from expression
-//            if (!$inputIterator->valid()
-//                && !isset($computed[$memberA])) {
-//                $newExpression[] = $this->expressionBuffer[$memberA];
-//            }
-
             if ($processed) {
-                $this->updateBuffer($computed, $newExpression);
+                $this->updateBuffer($computed, $result);
                 break;
             }
         }
 
-        //@TODO find a suitable position for this check
-        //@TODO check if the operator is still present in the buffer
+        if ($this->hasMoreSigns($currentSign)) {
+            $this->computeLine($operation);
+        }
     }
 
     /**
+     * Update Buffer Members
+     *
      * @param $computed
      * @param $newExpression
      */
     protected function updateBuffer($computed, $newExpression)
     {
         $aux = $this->expressionBuffer;
+
         $firstKey = false;
         foreach ($computed as $opKey => $confirm) {
             if ($confirm && $this->expressionBuffer[$opKey]) {
@@ -138,6 +130,28 @@ class Calculator implements CalculatorInterface
         }
         $aux[$firstKey] = $newExpression;
         $aux->ksort();
+
         $this->expressionBuffer = new \ArrayObject($aux);
+    }
+
+    /**
+     * Check current buffer for more signs
+     * in order to decide a re-computation with the same operation
+     *
+     * @param $currentSign
+     * @return bool
+     */
+    protected function hasMoreSigns($currentSign)
+    {
+        $bufferIterator = $this->expressionBuffer->getIterator();
+        $redo = false;
+        while ($bufferIterator->valid()) {
+            if ($currentSign === $bufferIterator->current()) {
+                $redo = true;
+                break;
+            }
+            $bufferIterator->next();
+        }
+        return $redo;
     }
 }

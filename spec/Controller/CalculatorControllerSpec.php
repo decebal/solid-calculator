@@ -31,9 +31,9 @@ class CalculatorControllerSpec extends ObjectBehavior
         $this->compute('8-3')->shouldReturn("5");
     }
 
-    public function it_returns_5_for_expression()
+    public function it_returns_7_for_expression()
     {
-        $this->compute('2*2*2*1-1')->shouldReturn("5");
+        $this->compute('2*2*2*1-1')->shouldReturn("7");
     }
 
     public function it_returns_12_for_expression_2()
