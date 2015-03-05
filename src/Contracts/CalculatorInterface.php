@@ -20,5 +20,5 @@ interface CalculatorInterface
      *
      * @return mixed
      */
-    public function computeLine($expression);
+//    public function computeLine($expression);
 }
