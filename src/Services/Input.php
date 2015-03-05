@@ -15,7 +15,7 @@ class Input extends  InputAbstract
     public $iterator;
 
     /**
-     * @param string $string
+     * @param string                     $string
      * @param OperationIteratorInterface $iterator
      */
     public function __construct($string = '', OperationIteratorInterface $iterator)

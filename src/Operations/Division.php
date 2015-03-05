@@ -3,19 +3,16 @@
  * Created by PhpStorm.
  * User: decebal
  * Date: 18.02.2015
- * Time: 22:28
+ * Time: 22:28.
  */
 
 namespace App\Operations;
-
 
 use App\Contracts\OperationFactory;
 use App\Contracts\OperationInterface;
 
 /**
- * Class Division
- *
- * @package Operations
+ * Class Division.
  */
 class Division extends OperationFactory implements OperationInterface
 {
@@ -30,6 +27,6 @@ class Division extends OperationFactory implements OperationInterface
      */
     public function compute($memberA = '', $memberB = '')
     {
-        return (float)$memberA / (float)$memberB;
+        return (float) $memberA / (float) $memberB;
     }
 }

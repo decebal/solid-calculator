@@ -3,15 +3,13 @@
  * Created by PhpStorm.
  * User: decebal
  * Date: 18.02.2015
- * Time: 22:07
+ * Time: 22:07.
  */
 
 namespace App\Contracts;
 
 /**
- * Class OperationFactory
- *
- * @package Contracts
+ * Class OperationFactory.
  */
 abstract class OperationFactory
 {
@@ -29,7 +27,7 @@ abstract class OperationFactory
     }
 
     /**
-     * Late static binding for children
+     * Late static binding for children.
      *
      * @return string
      */
