@@ -36,7 +36,6 @@ class Calculator implements CalculatorInterface
     public function compute()
     {
         $this->operationsQueue->top();
-        $expression = $this->input->string;
         $this->expressionBuffer = $this->input->parseInput();
 
         while ($this->operationsQueue->valid()) {
@@ -44,7 +43,6 @@ class Calculator implements CalculatorInterface
             $this->computeLine($operation);
         }
 
-        //@TODO get result
         return join('', $this->expressionBuffer->getArrayCopy());
     }
 
