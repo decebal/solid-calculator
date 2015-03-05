@@ -33,14 +33,16 @@ abstract class InputAbstract
      */
     public function setString($string)
     {
-        $this->string = $string;
+        $this->string = $this->removeWhiteSpaces($string);
     }
 
     /**
+     * @param string $string
+     *
      * @return mixed
      */
-    public final function removeWhiteSpaces()
+    public final function removeWhiteSpaces($string = '')
     {
-        return preg_replace('/\s+/', '', $this->string);
+        return preg_replace('/\s+/', '', $string);
     }
 }

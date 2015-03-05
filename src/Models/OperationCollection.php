@@ -37,7 +37,7 @@ class OperationCollection
     /**
      * @param array $operations
      */
-    public function setOperations(array $operations = array())
+    public function setOperations(array $operations = [])
     {
         $operationQueue = new \SplPriorityQueue();
 

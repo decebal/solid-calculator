@@ -12,15 +12,13 @@ namespace App\Contracts;
 interface CalculatorInterface
 {
     /**
-     *
      * @return float
      */
     function compute();
 
     /**
-     * @param $expression
-     *
+     * @param OperationInterface $operation
      * @return mixed
      */
-    function computeLine($expression);
+    function computeLine(OperationInterface $operation = null);
 }

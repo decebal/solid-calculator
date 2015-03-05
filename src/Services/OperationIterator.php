@@ -12,14 +12,12 @@ use App\Models\OperationCollection;
 use App\Operations;
 
 /**
- * Class OperationIterator
- *
- * @package Models
+ * Class OperationIterator.
  */
 class OperationIterator implements OperationIteratorInterface
 {
-    public $signs = array();
-    public $flippedSigns = array();
+    public $signs = [];
+    public $flippedSigns = [];
 
     /**
      *
@@ -31,11 +29,12 @@ class OperationIterator implements OperationIteratorInterface
 
     /**
      * @param null $directory
+     *
      * @return array
      */
     public static function getClassNamesFromDirectory($directory = null)
     {
-        $classes = array();
+        $classes = [];
         $iterator = new \DirectoryIterator($directory);
 
         foreach ($iterator as $info) {
@@ -51,10 +50,10 @@ class OperationIterator implements OperationIteratorInterface
     {
         $currentDir = dirname(__FILE__);
 
-        return join(DIRECTORY_SEPARATOR, array(
+        return implode(DIRECTORY_SEPARATOR, [
             dirname($currentDir),
-            'Operations'
-        ));
+            'Operations',
+        ]);
     }
 
     public function getOperationSigns()
@@ -63,7 +62,7 @@ class OperationIterator implements OperationIteratorInterface
     }
 
     /**
-     * Flip The signs array
+     * Flip The signs array.
      */
     public function setOperationsBySigns()
     {

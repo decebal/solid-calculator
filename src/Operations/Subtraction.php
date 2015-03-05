@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: decebal
  * Date: 18.02.2015
- * Time: 22:26
+ * Time: 22:26.
  */
 
 namespace App\Operations;
@@ -12,9 +12,7 @@ use App\Contracts\OperationFactory;
 use App\Contracts\OperationInterface;
 
 /**
- * Class Subtraction
- *
- * @package Operations
+ * Class Subtraction.
  */
 class Subtraction extends OperationFactory implements OperationInterface
 {
@@ -29,6 +27,6 @@ class Subtraction extends OperationFactory implements OperationInterface
      */
     public function compute($memberA = '', $memberB = '')
     {
-        return (float)$memberA - (float)$memberB;
+        return (float) $memberA - (float) $memberB;
     }
 }
