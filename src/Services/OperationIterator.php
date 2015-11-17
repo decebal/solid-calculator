@@ -9,7 +9,6 @@
 
 use App\Contracts\OperationIteratorInterface;
 use App\Models\OperationCollection;
-use App\Operations;
 
 /**
  * Class OperationIterator.
