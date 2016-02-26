@@ -5,7 +5,6 @@
  * Date: 18.02.2015
  * Time: 22:07.
  */
-
 namespace App\Contracts;
 
 /**
