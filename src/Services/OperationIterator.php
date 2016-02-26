@@ -1,4 +1,6 @@
-<?php namespace App\Services;
+<?php
+
+namespace App\Services;
 
 /*
  * Created by PhpStorm.
@@ -107,7 +109,7 @@ class OperationIterator implements OperationIteratorInterface
         $operations = $this->getClassNamesFromDirectory($this->getOperationsDirectory());
         $signs = [];
         foreach ($operations as $operation) {
-            $operationClass = "App\\Operations\\".$operation;
+            $operationClass = 'App\\Operations\\'.$operation;
             $signs[$operationClass] = $operationClass::getSign();
         }
 
