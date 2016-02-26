@@ -5,7 +5,6 @@
  * Date: 22.02.2015
  * Time: 20:41.
  */
-
 namespace App\Contracts;
 
 interface CalculatorInterface

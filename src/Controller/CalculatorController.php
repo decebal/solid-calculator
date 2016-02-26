@@ -1,4 +1,6 @@
-<?php namespace App\Controller;
+<?php
+
+namespace App\Controller;
 
 use App\Services\Calculator;
 use App\Services\Input;
