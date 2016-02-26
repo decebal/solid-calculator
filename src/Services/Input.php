@@ -1,4 +1,6 @@
-<?php namespace App\Services;
+<?php
+
+namespace App\Services;
 
 /*
  * Created by PhpStorm.
@@ -19,7 +21,7 @@ class Input extends InputAbstract
      * @param string                     $string
      * @param OperationIteratorInterface $iterator
      */
-    public function __construct($string = '', OperationIteratorInterface $iterator)
+    public function __construct($string, OperationIteratorInterface $iterator)
     {
         $this->setString($string);
         $this->iterator = $iterator;
@@ -48,7 +50,7 @@ class Input extends InputAbstract
      */
     public function parseInput()
     {
-        preg_match_all("/([".implode('\\', $this->iterator->getOperationSigns())."]+)?([0-9]*)/",
+        preg_match_all('/(['.implode('\\', $this->iterator->getOperationSigns()).']+)?([0-9]*)/',
             $this->string,
             $keywords,
             PREG_OFFSET_CAPTURE
