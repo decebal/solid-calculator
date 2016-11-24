@@ -4,15 +4,6 @@
 
 Small Calculator Sample
 
-## Install
-
-Via Git
-
-``` bash
-$ git clone https://github.com/solid-decebal/calculator.git
-$ composer install
-```
-
 ## Usage
 
 ``` php
