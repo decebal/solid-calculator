@@ -20,9 +20,6 @@ class OperationIterator implements OperationIteratorInterface
     public $signs = [];
     public $flippedSigns = [];
 
-    /**
-     *
-     */
     public function __construct()
     {
         $this->setOperationSigns();

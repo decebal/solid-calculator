@@ -5,6 +5,7 @@
  * Date: 18.02.2015
  * Time: 22:26.
  */
+
 namespace App\Operations;
 
 use App\Contracts\OperationFactory;

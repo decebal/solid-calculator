@@ -5,6 +5,7 @@
  * Date: 23.02.2015
  * Time: 00:00.
  */
+
 namespace App\Contracts;
 
 interface OperationIteratorInterface
